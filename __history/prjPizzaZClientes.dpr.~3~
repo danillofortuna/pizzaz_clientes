@@ -1,0 +1,17 @@
+program prjPizzaZClientes;
+
+uses
+  Vcl.Forms,
+  uFrmMasterCad in 'uFrmMasterCad.pas' {FrmMasterCad},
+  UfrmMasterDetalhe in 'UfrmMasterDetalhe.pas' {frmMasterDetalhe},
+  uFrmMasterMenu in 'uFrmMasterMenu.pas' {FrmMasterMenu},
+  UfrmMasterPesquisa in 'UfrmMasterPesquisa.pas' {frmMasterPesquisa};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFrmMasterMenu, FrmMasterMenu);
+  Application.Run;
+end.

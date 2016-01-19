@@ -1,0 +1,165 @@
+unit uFrmCadClientes;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrmMasterCad, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.UI.Intf, FireDAC.VCLUI.Wait, FireDAC.Comp.UI, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.Actions, Vcl.ActnList,
+  Vcl.Buttons, Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls, uDM,
+  Vcl.Mask, Vcl.DBCtrls;
+
+type
+  TFrmCadClientes = class(TFrmMasterCad)
+    fdtncfldMasterid: TFDAutoIncField;
+    strngfldMasternome: TStringField;
+    strngfldMasterrua: TStringField;
+    strngfldMasterquadra: TStringField;
+    strngfldMasterlote: TStringField;
+    strngfldMastersetor: TStringField;
+    strngfldMasteredificio: TStringField;
+    strngfldMasterapartamento: TStringField;
+    strngfldMasterbloco: TStringField;
+    strngfldMastertelefone: TStringField;
+    strngfldMasterreferencia: TStringField;
+    lbl1: TLabel;
+    edtid: TDBEdit;
+    lbl2: TLabel;
+    edtnome: TDBEdit;
+    lbl3: TLabel;
+    edtrua: TDBEdit;
+    lbl4: TLabel;
+    edtquadra: TDBEdit;
+    lbl5: TLabel;
+    edtlote: TDBEdit;
+    lbl6: TLabel;
+    edtsetor: TDBEdit;
+    lbl7: TLabel;
+    edtedificio: TDBEdit;
+    lbl8: TLabel;
+    edtapartamento: TDBEdit;
+    lbl9: TLabel;
+    edtbloco: TDBEdit;
+    lbl10: TLabel;
+    edttelefone: TDBEdit;
+    lbl11: TLabel;
+    edtreferencia: TDBEdit;
+    lblPesNome: TLabel;
+    edtPesNome: TEdit;
+    lblPesTelefone: TLabel;
+    edtPesId: TEdit;
+    lblPesId: TLabel;
+    edtPesTelefone: TMaskEdit;
+    procedure btnFecharClick(Sender: TObject);
+    procedure actNovoExecute(Sender: TObject);
+    procedure actGravarExecute(Sender: TObject);
+    procedure actCancelarExecute(Sender: TObject);
+    procedure actExcluirExecute(Sender: TObject);
+    procedure btnPesquisarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmCadClientes: TFrmCadClientes;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmCadClientes.actCancelarExecute(Sender: TObject);
+begin
+  inherited;
+  qryMaster.Cancel;
+end;
+
+procedure TFrmCadClientes.actExcluirExecute(Sender: TObject);
+begin
+  inherited;
+  qryMaster.Delete;
+end;
+
+procedure TFrmCadClientes.actGravarExecute(Sender: TObject);
+begin
+  inherited;
+  qryMaster.Post;
+end;
+
+procedure TFrmCadClientes.actNovoExecute(Sender: TObject);
+begin
+  inherited;
+  edtPesNome.Clear;
+  edtPesTelefone.Clear;
+  btnPesquisar.Click;
+  qryMaster.Insert;
+  edtnome.SetFocus;
+end;
+
+procedure TFrmCadClientes.btnFecharClick(Sender: TObject);
+begin
+  inherited;
+  FreeAndNil(FrmCadClientes);
+end;
+
+procedure TFrmCadClientes.btnPesquisarClick(Sender: TObject);
+begin
+  inherited;
+  if qryMaster.Active then
+  begin
+    qryMaster.Close;
+  end;
+
+  qryMaster.SQL.Clear;
+  qryMaster.SQL.Add('SELECT id,        ');
+  qryMaster.SQL.Add('     nome,        ');
+  qryMaster.SQL.Add('     rua,         ');
+  qryMaster.SQL.Add('     quadra,      ');
+  qryMaster.SQL.Add('     lote,        ');
+  qryMaster.SQL.Add('     setor,       ');
+  qryMaster.SQL.Add('     edificio,    ');
+  qryMaster.SQL.Add('     apartamento, ');
+  qryMaster.SQL.Add('     bloco,       ');
+  qryMaster.SQL.Add('     telefone,    ');
+  qryMaster.SQL.Add('     referencia   ');
+  qryMaster.SQL.Add('FROM   clientes   ');
+  qryMaster.SQL.Add('WHERE 1=1         ');
+  if edtPesId.Text <> EmptyStr then
+  begin
+    qryMaster.SQL.Add('AND id = '+edtPesId.Text);
+  end
+  else
+  begin
+    if edtPesNome.Text <> EmptyStr then
+    begin
+      qryMaster.SQL.Add('AND nome like '+quotedStr('%'+edtPesNome.Text+'%'));
+    end;
+    if edtPesTelefone.Text <> '(  )    -    ' then
+    begin
+      qryMaster.SQL.Add('AND telefone = '+quotedStr(edtPesTelefone.Text));
+    end;
+  end;
+  qryMaster.Open();
+  if ((qryMaster.IsEmpty) and (edtPesNome.Text+edtPesTelefone.Text+edtpesid.Text <> '(  )    -    ')) then
+  begin
+    Application.MessageBox('Nenhum resultado encontrado!', 'Atenção', MB_OK +
+      MB_ICONWARNING);
+  end;
+  edtPesNome.Clear;
+  edtPesTelefone.Clear;
+  edtPesId.Clear;
+
+end;
+
+procedure TFrmCadClientes.FormShow(Sender: TObject);
+begin
+  inherited;
+  qryMaster.Open();
+end;
+
+end.

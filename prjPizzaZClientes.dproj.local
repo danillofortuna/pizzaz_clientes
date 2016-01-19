@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2015/11/17 19:38:03.000.704,=C:\Users\Ninja\Documents\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>2015/11/17 19:38:30.000.628,C:\Users\Ninja\Documents\Embarcadero\Studio\Projects\Unit4.dfm=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\uPrincipal.dfm</Transaction>
+    <Transaction>2015/11/17 19:38:30.000.628,C:\Users\Ninja\Documents\Embarcadero\Studio\Projects\Unit4.pas=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\uPrincipal.pas</Transaction>
+    <Transaction>2015/11/17 19:38:48.000.264,C:\Users\Ninja\Documents\Embarcadero\Studio\Projects\Project4.dproj=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\prjPizzaZClientes.dproj</Transaction>
+    <Transaction>2015/11/19 02:01:27.000.885,=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\UfrmMasterDetalhe.pas</Transaction>
+    <Transaction>2015/11/19 02:01:27.000.760,=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\uFrmMasterCad.pas</Transaction>
+    <Transaction>2015/11/19 02:01:28.000.326,=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\uFrmMasterMenu.pas</Transaction>
+    <Transaction>2015/11/19 02:01:28.000.417,=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\UfrmMasterPesquisa.pas</Transaction>
+    <Transaction>2015/11/19 02:39:59.000.955,\\VBOXSVR\compartilhamento\github\pizzaz_clientes\uPrincipal.pas=</Transaction>
+    <Transaction>2015/11/19 02:57:59.000.462,=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\Unit1.pas</Transaction>
+    <Transaction>2015/11/19 02:59:54.000.132,\\VBOXSVR\compartilhamento\github\pizzaz_clientes\Unit1.dfm=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\uFrmCadClientes.dfm</Transaction>
+    <Transaction>2015/11/19 02:59:54.000.132,\\VBOXSVR\compartilhamento\github\pizzaz_clientes\Unit1.pas=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\uFrmCadClientes.pas</Transaction>
+    <Transaction>2015/11/19 03:00:09.000.676,=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\Unit1.pas</Transaction>
+    <Transaction>2015/11/19 03:00:19.000.559,\\VBOXSVR\compartilhamento\github\pizzaz_clientes\Unit1.pas=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\uDM.pas</Transaction>
+    <Transaction>2015/11/19 03:00:19.000.559,\\VBOXSVR\compartilhamento\github\pizzaz_clientes\Unit1.dfm=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\uDM.dfm</Transaction>
+    <Transaction>2015/11/19 03:47:08.000.843,=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\Unit1.pas</Transaction>
+    <Transaction>2015/11/19 03:48:37.000.433,=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\Unit1.pas</Transaction>
+    <Transaction>2015/11/19 04:02:21.000.154,\\VBOXSVR\compartilhamento\github\pizzaz_clientes\Unit1.dfm=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\uFrmFicha.dfm</Transaction>
+    <Transaction>2015/11/19 04:02:21.000.154,\\VBOXSVR\compartilhamento\github\pizzaz_clientes\Unit1.pas=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\uFrmFicha.pas</Transaction>
+    <Transaction>2015/11/26 20:33:58.519,=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\Unit1.pas</Transaction>
+    <Transaction>2015/11/26 20:43:49.785,\\VBOXSVR\compartilhamento\github\pizzaz_clientes\uFrmBackup.dfm=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\Unit1.dfm</Transaction>
+    <Transaction>2015/11/26 20:43:49.785,\\VBOXSVR\compartilhamento\github\pizzaz_clientes\uFrmBackup.pas=\\VBOXSVR\compartilhamento\github\pizzaz_clientes\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

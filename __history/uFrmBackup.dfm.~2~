@@ -1,0 +1,174 @@
+object frmBackup: TfrmBackup
+  Left = 0
+  Top = 0
+  BorderStyle = bsNone
+  Caption = 'Configura'#231#245'es de Backup'
+  ClientHeight = 387
+  ClientWidth = 625
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  WindowState = wsMaximized
+  OnClick = FormClick
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnlTop: TPanel
+    Left = 0
+    Top = 0
+    Width = 625
+    Height = 35
+    Align = alTop
+    Color = clSkyBlue
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitLeft = -237
+    ExplicitWidth = 700
+    object lblTitulo: TLabel
+      Left = 1
+      Top = 1
+      Width = 555
+      Height = 33
+      Align = alClient
+      Alignment = taCenter
+      Caption = 'Configura'#231#245'es de Backup'
+      Color = clGray
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      ExplicitWidth = 263
+      ExplicitHeight = 25
+    end
+    object btnFechar: TSpeedButton
+      Left = 556
+      Top = 1
+      Width = 68
+      Height = 33
+      Align = alRight
+      Caption = 'Fechar'
+      OnClick = btnFecharClick
+      ExplicitLeft = 712
+    end
+  end
+  object qryMaster: TFDQuery
+    Connection = DM.conMysql
+    SQL.Strings = (
+      'SELECT id, '
+      '       nome, '
+      '       rua, '
+      '       quadra, '
+      '       lote, '
+      '       setor, '
+      '       edificio, '
+      '       apartamento, '
+      '       bloco, '
+      '       telefone, '
+      '       referencia '
+      'FROM   clientes ')
+    Left = 480
+    Top = 11
+    object fdtncfldMasterid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object strngfldMasternome: TStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Required = True
+      Size = 200
+    end
+    object strngfldMasterrua: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'rua'
+      Origin = 'rua'
+      Size = 200
+    end
+    object strngfldMasterquadra: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'quadra'
+      Origin = 'quadra'
+      Size = 10
+    end
+    object strngfldMasterlote: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'lote'
+      Origin = 'lote'
+      Size = 10
+    end
+    object strngfldMastersetor: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'setor'
+      Origin = 'setor'
+      Size = 200
+    end
+    object strngfldMasteredificio: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'edificio'
+      Origin = 'edificio'
+      Size = 100
+    end
+    object strngfldMasterapartamento: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'apartamento'
+      Origin = 'apartamento'
+      Size = 100
+    end
+    object strngfldMasterbloco: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'bloco'
+      Origin = 'bloco'
+      Size = 100
+    end
+    object strngfldMastertelefone: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'telefone'
+      Origin = 'telefone'
+      EditMask = '!\(99\)0000-0000;1;_'
+    end
+    object strngfldMasterreferencia: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'referencia'
+      Origin = 'referencia'
+      Size = 200
+    end
+  end
+  object dsMaster: TDataSource
+    AutoEdit = False
+    DataSet = qryMaster
+    Left = 416
+    Top = 11
+  end
+  object fdgxwtcrsrFDWaitCursor: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 568
+    Top = 45
+  end
+  object idsmtp: TIdSMTP
+    SASLMechanisms = <>
+    Left = 128
+    Top = 96
+  end
+  object idmsg: TIdMessage
+    AttachmentEncoding = 'MIME'
+    BccList = <>
+    CCList = <>
+    Encoding = meDefault
+    FromList = <
+      item
+      end>
+    Recipients = <>
+    ReplyTo = <>
+    ConvertPreamble = True
+    Left = 288
+    Top = 184
+  end
+end

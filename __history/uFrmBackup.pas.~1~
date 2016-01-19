@@ -1,0 +1,72 @@
+unit uFrmBackup;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.UI.Intf, FireDAC.VCLUI.Wait,
+  IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient,
+  IdExplicitTLSClientServerBase, IdMessageClient, IdSMTPBase, IdSMTP,
+  FireDAC.Comp.UI, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, IdMessage;
+
+type
+  TfrmBackup = class(TForm)
+    pnlTop: TPanel;
+    lblTitulo: TLabel;
+    btnFechar: TSpeedButton;
+    qryMaster: TFDQuery;
+    fdtncfldMasterid: TFDAutoIncField;
+    strngfldMasternome: TStringField;
+    strngfldMasterrua: TStringField;
+    strngfldMasterquadra: TStringField;
+    strngfldMasterlote: TStringField;
+    strngfldMastersetor: TStringField;
+    strngfldMasteredificio: TStringField;
+    strngfldMasterapartamento: TStringField;
+    strngfldMasterbloco: TStringField;
+    strngfldMastertelefone: TStringField;
+    strngfldMasterreferencia: TStringField;
+    dsMaster: TDataSource;
+    fdgxwtcrsrFDWaitCursor: TFDGUIxWaitCursor;
+    idsmtp: TIdSMTP;
+    idmsg: TIdMessage;
+    procedure btnFecharClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmBackup: TfrmBackup;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmBackup.btnFecharClick(Sender: TObject);
+begin
+  close;
+  FreeAndNil(frmBackup);
+end;
+
+procedure TfrmBackup.FormCreate(Sender: TObject);
+begin
+  idsmtp.Host := 'smtp.gmail.com';
+  idsmtp.Port := 25;
+  idsmtp.Username := 'danillofortuna@gmail.com';
+  idsmtp.Connect;
+
+  if idsmtp.Connected then
+  begin
+    idmsg.Body.Add('teste');
+    idsmtp.Send(idmsg);
+    idsmtp.Disconnect();
+  end;
+end;
+
+end.
