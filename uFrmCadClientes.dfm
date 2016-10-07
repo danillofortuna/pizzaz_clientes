@@ -3,14 +3,14 @@ inherited FrmCadClientes: TFrmCadClientes
   ClientHeight = 563
   ClientWidth = 700
   OnShow = FormShow
-  ExplicitTop = -37
+  ExplicitTop = -64
   ExplicitWidth = 716
   ExplicitHeight = 601
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlPesquisas: TPanel
     Width = 700
-    ExplicitWidth = 116
+    ExplicitWidth = 700
     object lblPesNome: TLabel [1]
       Left = 215
       Top = 19
@@ -36,7 +36,7 @@ inherited FrmCadClientes: TFrmCadClientes
       Left = 637
       TabOrder = 3
       TabStop = True
-      ExplicitLeft = 53
+      ExplicitLeft = 637
       inherited btnPesquisar: TButton
         OnClick = btnPesquisarClick
       end
@@ -70,7 +70,7 @@ inherited FrmCadClientes: TFrmCadClientes
   end
   inherited pnlResultados: TPanel
     Width = 700
-    ExplicitWidth = 116
+    ExplicitWidth = 700
     inherited gridResultados: TDBGrid
       Width = 698
       Columns = <
@@ -141,13 +141,13 @@ inherited FrmCadClientes: TFrmCadClientes
     Width = 700
     TabOrder = 3
     ExplicitTop = 522
-    ExplicitWidth = 116
+    ExplicitWidth = 700
   end
   inherited pnlDados: TPanel
     Width = 700
     Height = 317
     TabOrder = 2
-    ExplicitWidth = 116
+    ExplicitWidth = 700
     ExplicitHeight = 317
     object lbl1: TLabel
       Left = 23
@@ -341,15 +341,15 @@ inherited FrmCadClientes: TFrmCadClientes
   end
   inherited pnlTop: TPanel
     Width = 700
-    ExplicitWidth = 116
+    ExplicitWidth = 700
     inherited lblTitulo: TLabel
       Width = 630
-      Height = 33
       Caption = 'Cadastro de Clientes'
       ExplicitWidth = 215
     end
     inherited btnFechar: TSpeedButton
       Left = 631
+      ExplicitLeft = 631
     end
   end
   inherited qryMaster: TFDQuery
@@ -433,9 +433,6 @@ inherited FrmCadClientes: TFrmCadClientes
       Origin = 'referencia'
       Size = 200
     end
-  end
-  inherited dsMaster: TDataSource
-    AutoEdit = False
   end
   inherited FDWaitCursor: TFDGUIxWaitCursor
     Left = 472

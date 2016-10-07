@@ -8,7 +8,8 @@ uses
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.UI.Intf, FireDAC.VCLUI.Wait,
-  FireDAC.Comp.UI, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Comp.UI, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Vcl.ExtCtrls, uFrmImprimir;
 
 type
   TfrmFicha = class(TForm)
@@ -49,6 +50,7 @@ type
     strngfldMasterreferencia: TStringField;
     dsMaster: TDataSource;
     fdgxwtcrsrFDWaitCursor: TFDGUIxWaitCursor;
+    lbl12: TLabel;
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
   private
@@ -66,7 +68,22 @@ implementation
 
 procedure TfrmFicha.FormKeyPress(Sender: TObject; var Key: Char);
 begin
-  Close;
+  if key = #13 then
+  begin
+    if frmImprimir = nil then
+      begin
+        Application.CreateForm(TfrmImprimir, frmImprimir);
+      end;
+      self.Enabled:=false;
+      frmImprimir.Close;
+      if not frmImprimir.Visible then
+        frmImprimir.ShowModal;
+      self.Enabled:=true;
+  end
+  else
+  begin
+    Close;
+  end;
 end;
 
 procedure TfrmFicha.FormShow(Sender: TObject);

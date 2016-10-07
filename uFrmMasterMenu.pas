@@ -14,7 +14,6 @@ type
     imgLogo: TImage;
     pnlTopo: TPanel;
     cbbFormsPessoas: TComboBox;
-    imgFundo: TImage;
     lblRise: TLabel;
     btnClientes: TSpeedButton;
     pnlPesRight: TPanel;
@@ -94,7 +93,7 @@ procedure TFrmMasterMenu.btnRelatorioClick(Sender: TObject);
 begin
   Application.MessageBox('Este módulo não foi implementado.' + #13#10 +
     'Para solicitar entre em contato:' + #13#10 +
-    '''rise@risetecnologia.com''', 'RISE', MB_OK + MB_ICONINFORMATION);
+    '''danillofortuna@gmail.com''', 'DAFLIs', MB_OK + MB_ICONINFORMATION);
 
 end;
 

@@ -90,17 +90,20 @@ procedure TFrmCadClientes.actGravarExecute(Sender: TObject);
 begin
   if edttelefone.Text <> '(  )    -    ' then
   begin
-    qryTelefone.SQL.Clear;
-    qryTelefone.SQL.Add('select * from clientes where telefone = :telefone');
-    qryTelefone.ParamByName('telefone').AsString := edttelefone.Text;
-    qryTelefone.Open();
-    if not qryTelefone.IsEmpty then
+    if strtoint(edtid.Text) < 0 then
     begin
-      Application.MessageBox('Já existe um cadastro com este número de telefone!',
-        'Duplicidade', MB_OK + MB_ICONWARNING);
-      edttelefone.SetFocus;
-      qryTelefone.Close;
-      Exit;
+      qryTelefone.SQL.Clear;
+      qryTelefone.SQL.Add('select * from clientes where telefone = :telefone');
+      qryTelefone.ParamByName('telefone').AsString := edttelefone.Text;
+      qryTelefone.Open();
+      if not qryTelefone.IsEmpty then
+      begin
+        Application.MessageBox('Já existe um cadastro com este número de telefone!',
+          'Duplicidade', MB_OK + MB_ICONWARNING);
+        edttelefone.SetFocus;
+        qryTelefone.Close;
+        Exit;
+      end;
     end;
   end;
 

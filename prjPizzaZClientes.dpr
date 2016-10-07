@@ -9,14 +9,15 @@ uses
   uFrmCadClientes in 'uFrmCadClientes.pas' {FrmCadClientes},
   uDM in 'uDM.pas' {DM: TDataModule},
   uFrmFicha in 'uFrmFicha.pas' {frmFicha},
-  uFrmBackup in 'uFrmBackup.pas' {frmBackup};
+  uFrmBackup in 'uFrmBackup.pas' {frmBackup},
+  uFrmImprimir in 'uFrmImprimir.pas' {frmImprimir};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TFrmMasterMenu, FrmMasterMenu);
   Application.CreateForm(TDM, DM);
+  Application.CreateForm(TFrmMasterMenu, FrmMasterMenu);
   Application.Run;
 end.

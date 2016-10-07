@@ -2,7 +2,7 @@ object frmFicha: TfrmFicha
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  ClientHeight = 375
+  ClientHeight = 396
   ClientWidth = 592
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
@@ -186,6 +186,19 @@ object frmFicha: TfrmFicha
     ParentFont = False
     ExplicitWidth = 142
   end
+  object lbl12: TLabel
+    Left = 398
+    Top = 354
+    Width = 163
+    Height = 19
+    Caption = '[ENTER] para imprimir'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
   object edtreferencia: TDBEdit
     Left = 111
     Top = 327
@@ -193,6 +206,7 @@ object frmFicha: TfrmFicha
     Height = 21
     DataField = 'referencia'
     DataSource = dsMaster
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -209,6 +223,7 @@ object frmFicha: TfrmFicha
     Height = 21
     DataField = 'bloco'
     DataSource = dsMaster
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -225,6 +240,7 @@ object frmFicha: TfrmFicha
     Height = 21
     DataField = 'apartamento'
     DataSource = dsMaster
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -241,6 +257,7 @@ object frmFicha: TfrmFicha
     Height = 21
     DataField = 'edificio'
     DataSource = dsMaster
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -257,6 +274,7 @@ object frmFicha: TfrmFicha
     Height = 21
     DataField = 'setor'
     DataSource = dsMaster
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -273,6 +291,7 @@ object frmFicha: TfrmFicha
     Height = 21
     DataField = 'quadra'
     DataSource = dsMaster
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -289,6 +308,7 @@ object frmFicha: TfrmFicha
     Height = 21
     DataField = 'lote'
     DataSource = dsMaster
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -305,6 +325,7 @@ object frmFicha: TfrmFicha
     Height = 21
     DataField = 'rua'
     DataSource = dsMaster
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -321,6 +342,7 @@ object frmFicha: TfrmFicha
     Height = 21
     DataField = 'telefone'
     DataSource = dsMaster
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -337,6 +359,7 @@ object frmFicha: TfrmFicha
     Height = 21
     DataField = 'nome'
     DataSource = dsMaster
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -354,6 +377,7 @@ object frmFicha: TfrmFicha
     TabStop = False
     DataField = 'id'
     DataSource = dsMaster
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11

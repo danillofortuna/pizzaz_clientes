@@ -1,0 +1,45 @@
+unit uFrmImprimir;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TfrmImprimir = class(TForm)
+    mmoImp: TMemo;
+    pnl1: TPanel;
+    procedure btnCancelarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmImprimir: TfrmImprimir;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmImprimir.btnCancelarClick(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TfrmImprimir.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  mmoImp.Lines.Clear;
+end;
+
+procedure TfrmImprimir.FormShow(Sender: TObject);
+begin
+  self.Left := Trunc((Screen.WorkAreaWidth - self.Width )/2);
+  self.Top  := Trunc((Screen.WorkAreaHeight- self.Height)/2);
+end;
+
+end.

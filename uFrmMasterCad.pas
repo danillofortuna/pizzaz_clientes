@@ -68,6 +68,7 @@ begin
   btnGravar.Enabled   :=  false;
   btnNovo.Enabled     :=  true;
   btnExcluir.enabled  :=  true;
+  pnlResultados.Enabled:= true;
 end;
 
 procedure TFrmMasterCad.actEditExecute(Sender: TObject);
@@ -76,6 +77,7 @@ begin
   btnGravar.Enabled   :=  True;
   btnNovo.Enabled     :=  False;
   btnExcluir.enabled  :=  False;
+  pnlResultados.Enabled:= False;
 end;
 
 procedure TFrmMasterCad.actExcluirExecute(Sender: TObject);
@@ -89,6 +91,7 @@ begin
    btnGravar.Enabled   :=  false;
    btnNovo.Enabled     :=  true;
    btnExcluir.enabled  :=  true;
+  pnlResultados.Enabled:=  true;;
 end;
 
 procedure TFrmMasterCad.actGravarExecute(Sender: TObject);
@@ -97,6 +100,7 @@ begin
   btnGravar.Enabled   :=  false;
   btnNovo.Enabled     :=  true;
   btnExcluir.enabled  :=  true;
+  pnlResultados.Enabled:= true;
 end;
 
 procedure TFrmMasterCad.actNovoExecute(Sender: TObject);
@@ -105,6 +109,7 @@ begin
   btnGravar.Enabled   :=  True;
   btnNovo.Enabled     :=  False;
   btnExcluir.enabled  :=  false;
+  pnlResultados.Enabled:= False;
 end;
 
 procedure TFrmMasterCad.btnFecharClick(Sender: TObject);
