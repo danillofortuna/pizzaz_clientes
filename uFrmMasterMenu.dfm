@@ -540,21 +540,6 @@ object FrmMasterMenu: TFrmMasterMenu
       ExplicitLeft = 0
       ExplicitTop = 145
     end
-    object lblRise: TLabel
-      Left = 1
-      Top = 550
-      Width = 160
-      Height = 16
-      Align = alBottom
-      Caption = 'www.risetecnologia.com'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-      ExplicitWidth = 158
-    end
     object btnClientes: TSpeedButton
       Left = 1
       Top = 127

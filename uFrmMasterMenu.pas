@@ -4,9 +4,10 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
-  Vcl.Imaging.jpeg, Vcl.Imaging.pngimage, Vcl.Buttons, Vcl.Mask, System.Actions,
-  Vcl.ActnList, uDM, uFrmBackup, System.IniFiles, Winapi.ShellAPI;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Imaging.jpeg,
+  Vcl.Imaging.pngimage, Vcl.Buttons, Vcl.Mask, System.Actions, Vcl.ActnList, uDM,
+  uFrmBackup, System.IniFiles, Winapi.ShellAPI, Winapi.WinSpool, Vcl.Printers,
+  System.StrUtils;
 
 type
   TFrmMasterMenu = class(TForm)
@@ -14,7 +15,6 @@ type
     imgLogo: TImage;
     pnlTopo: TPanel;
     cbbFormsPessoas: TComboBox;
-    lblRise: TLabel;
     btnClientes: TSpeedButton;
     pnlPesRight: TPanel;
     btnFechar: TSpeedButton;
@@ -24,8 +24,8 @@ type
     actBuscaRapida: TAction;
     btnBackup: TSpeedButton;
     procedure FormShow(Sender: TObject);
-    procedure MostraForm(formulario : TForm; cbTelas : tComboBox);
-    procedure FechaForm(formulario : TForm;cbTelas : TComboBox);
+    procedure MostraForm(formulario: TForm; cbTelas: tComboBox);
+    procedure FechaForm(formulario: TForm; cbTelas: TComboBox);
     procedure btnFinalizarClick(Sender: TObject);
     procedure cbbFormsPessoasChange(Sender: TObject);
     procedure btnClientesClick(Sender: TObject);
@@ -34,12 +34,10 @@ type
     procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
     procedure actBuscaRapidaExecute(Sender: TObject);
     procedure btnBackupClick(Sender: TObject);
-
   private
-    function CreateProcessSimple(cmd: string): boolean;
     { Private declarations }
   public
-    lado : integer;
+    lado: integer;
     { Public declarations }
   end;
 
@@ -61,12 +59,11 @@ end;
 
 procedure TFrmMasterMenu.btnBackupClick(Sender: TObject);
 var
-  comando : string;
+  comando: string;
 begin
-  comando := (ExtractFilePath(Application.ExeName)+'BKP.BAT');
-  ShellExecute(handle,'open',PChar(comando), '','',SW_SHOWNORMAL);
-   Application.MessageBox('Backup Realizado!', 'Processo Concluído',
-     MB_OK + MB_ICONINFORMATION);
+  comando := (ExtractFilePath(Application.ExeName) + 'BKP.BAT');
+  ShellExecute(handle, 'open', PChar(comando), '', '', SW_SHOWNORMAL);
+  Application.MessageBox('Backup Realizado!', 'Processo Concluído', MB_OK + MB_ICONINFORMATION);
 end;
 
 procedure TFrmMasterMenu.btnClientesClick(Sender: TObject);
@@ -86,22 +83,20 @@ end;
 
 procedure TFrmMasterMenu.btnFinalizarClick(Sender: TObject);
 begin
- Close;
+  Close;
 end;
 
 procedure TFrmMasterMenu.btnRelatorioClick(Sender: TObject);
 begin
-  Application.MessageBox('Este módulo não foi implementado.' + #13#10 +
-    'Para solicitar entre em contato:' + #13#10 +
-    '''danillofortuna@gmail.com''', 'DAFLIs', MB_OK + MB_ICONINFORMATION);
+  Application.MessageBox('Este módulo não foi implementado.' + #13#10 + 'Para solicitar entre em contato:' + #13#10 + '''danillofortuna@gmail.com''', 'DAFLIs', MB_OK + MB_ICONINFORMATION);
 
 end;
 
 procedure TFrmMasterMenu.cbbFormsPessoasChange(Sender: TObject);
 var
-  i : integer;
+  i: integer;
 begin
-  for I := 0 to MDIChildCount-1 do
+  for I := 0 to MDIChildCount - 1 do
   begin
     if MDIChildren[i].Hint = cbbFormsPessoas.text then
     begin
@@ -135,12 +130,11 @@ begin
       frmFicha.qryMaster.SQL.Add('     telefone,    ');
       frmFicha.qryMaster.SQL.Add('     referencia   ');
       frmFicha.qryMaster.SQL.Add('FROM   clientes   ');
-      frmFicha.qryMaster.SQL.Add('WHERE telefone = '+quotedstr(edtPesquisa.Text));
+      frmFicha.qryMaster.SQL.Add('WHERE telefone = ' + quotedstr(edtPesquisa.Text));
       frmFicha.qryMaster.Open();
       if frmFicha.qryMaster.IsEmpty then
       begin
-        Application.MessageBox('Não existe cadastro com este telefone.',
-          'Atenção', MB_OK + MB_ICONWARNING);
+        Application.MessageBox('Não existe cadastro com este telefone.', 'Atenção', MB_OK + MB_ICONWARNING);
 
       end
       else
@@ -149,29 +143,11 @@ begin
       end;
 
     end;
-    edtPesquisa.Text :='(  )    -    ';
+    edtPesquisa.Text := '(  )    -    ';
   end;
 end;
 
-function TFrmMasterMenu.CreateProcessSimple(cmd: string):boolean;
-var SUInfo:  TStartupInfo;
-   ProcInfo: TProcessInformation;
-begin
-   FillChar(SUInfo, SizeOf(SUInfo), #0);
-   SUInfo.cb      := SizeOf(SUInfo);
-   SUInfo.dwFlags := STARTF_USESHOWWINDOW;
-   SUInfo.wShowWindow := SW_HIDE;
-   result := CreateProcess(nil, PChar(cmd), nil, nil, false, CREATE_NEW_CONSOLE or NORMAL_PRIORITY_CLASS, nil, nil, SUInfo, ProcInfo);
-   if result then
-   begin
-      WaitForSingleObject(ProcInfo.hProcess, INFINITE);
-      CloseHandle(ProcInfo.hProcess);
-      CloseHandle(ProcInfo.hThread);
-   end;
-end;
-
-
-procedure TFrmMasterMenu.FechaForm(formulario: TForm;cbTelas : TComboBox);
+procedure TFrmMasterMenu.FechaForm(formulario: TForm; cbTelas: TComboBox);
 begin
   cbTelas.Items.Delete(cbTelas.Items.IndexOf(formulario.Hint));
   formulario.Close;
@@ -179,13 +155,13 @@ end;
 
 procedure TFrmMasterMenu.FormShow(Sender: TObject);
 begin
-  self.Left   :=  0;
-  self.Top    :=  0;
-  self.width  :=  Screen.WorkAreawidth;
-  self.Height :=  Screen.WorkAreaHeight;
+  self.Left := 0;
+  self.Top := 0;
+  self.width := Screen.WorkAreawidth;
+  self.Height := Screen.WorkAreaHeight;
 end;
 
-procedure TFrmMasterMenu.MostraForm(formulario: TForm;cbTelas : tComboBox);
+procedure TFrmMasterMenu.MostraForm(formulario: TForm; cbTelas: tComboBox);
 begin
   if cbTelas.Items[cbTelas.Items.IndexOf(formulario.Hint)].IsEmpty then
   begin
@@ -193,10 +169,10 @@ begin
   end;
   //LockWindow para testar melhor visualização na criação do form.
   //Sem que o usuário veja o mesmo ser redimensionado ao aparecer
-
   LockWindowUpdate(Handle);
   formulario.Show;
   LockWindowUpdate(0);
 end;
 
 end.
+

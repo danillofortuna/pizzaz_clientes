@@ -18,26 +18,13 @@ object frmImprimir: TfrmImprimir
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object mmoImp: TMemo
-    Left = 0
-    Top = 0
-    Width = 461
-    Height = 212
-    Align = alClient
-    TabOrder = 0
-    ExplicitTop = -6
-    ExplicitWidth = 465
-    ExplicitHeight = 216
-  end
   object pnl1: TPanel
     Left = 0
     Top = 212
     Width = 461
     Height = 33
     Align = alBottom
-    TabOrder = 1
-    ExplicitTop = 222
-    ExplicitWidth = 465
+    TabOrder = 0
     object lbl1: TLabel
       Left = 24
       Top = 6
@@ -52,6 +39,14 @@ object frmImprimir: TfrmImprimir
       Height = 13
       Caption = '[Ctrl + ENTER] - Imprimir'
     end
+  end
+  object Livre: TMemo
+    Left = 0
+    Top = 0
+    Width = 461
+    Height = 212
+    TabOrder = 1
+    OnKeyPress = LivreKeyPress
   end
   object actlst1: TActionList
     Left = 256
